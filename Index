@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: lightpink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #loveMessage {
+            display: none;
+        }
+        .heart {
+            position: absolute;
+            color: lightpink;
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="inputBox">
+            <input type="text" id="nameInput" placeholder="Enter your name">
+            <button onclick="checkName()">Enter</button>
+        </div>
+        <div id="loveMessage">
+            <h1>I Love You</h1>
+            <p>January 21st, 2016 - Forever</p>
+        </div>
+    </div>
+    
+    <script>
+        function checkName() {
+            const name = document.getElementById("nameInput").value;
+            if (name.trim().toLowerCase() === "angela") {
+                document.getElementById("inputBox").style.display = "none";
+                document.getElementById("loveMessage").style.display = "block";
+                createHearts();
+            }
+        }
+        
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
