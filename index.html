@@ -19,7 +19,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        #loveMessage {
+        #loveMessage, #valentineMessage {
             display: none;
         }
         .heart {
@@ -31,6 +31,22 @@
         @keyframes fall {
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -44,16 +60,27 @@
             <h1>I Love You</h1>
             <p>January 21st, 2016 - Forever</p>
         </div>
+        <div id="valentineMessage">
+            <h1>Happy Valentine's Day!</h1>
+            <p>To Grammy and Grampy. Love, Lucy.</p>
+            <div class="image-container">
+                <a href="baby.png" target="_blank"><img src="baby.png" alt="Baby"></a>
+                <a href="heart.png" target="_blank"><img src="heart.png" alt="Heart"></a>
+            </div>
+        </div>
     </div>
     
     <script>
         function checkName() {
-            const name = document.getElementById("nameInput").value;
-            if (name.trim().toLowerCase() === "angela") {
+            const name = document.getElementById("nameInput").value.trim().toLowerCase();
+            if (name === "angela") {
                 document.getElementById("inputBox").style.display = "none";
                 document.getElementById("loveMessage").style.display = "block";
-                createHearts();
+            } else if (name === "mom") {
+                document.getElementById("inputBox").style.display = "none";
+                document.getElementById("valentineMessage").style.display = "block";
             }
+            createHearts();
         }
         
         function createHearts() {
