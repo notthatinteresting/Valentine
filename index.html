@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day</title>
+    <title>Love Page</title>
     <style>
         body {
             background-color: black;
@@ -63,6 +63,14 @@
             max-width: 90%;
             max-height: 90%;
         }
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: lightpink;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -77,7 +85,8 @@
         </div>
         <div id="valentineMessage">
             <h1>Happy Valentine's Day!</h1>
-            <p>To Grammy and Grampy Love, Lucy</p>
+            <p>To Grammy and Grampy.</p>
+            <p>Love, Lucy.</p>
             <div class="image-container">
                 <img src="baby.png" alt="Baby" onclick="openModal(this.src)">
                 <img src="heart.png" alt="Heart" onclick="openModal(this.src)">
@@ -85,7 +94,8 @@
         </div>
     </div>
     
-    <div class="modal" id="imageModal" onclick="closeModal()">
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">&times;</span>
         <img id="modalImage" src="">
     </div>
     
