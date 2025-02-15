@@ -48,6 +48,21 @@
         .image-container img:hover {
             transform: scale(1.2);
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
     </style>
 </head>
 <body>
@@ -64,15 +79,21 @@
             <h1>Happy Valentine's Day!</h1>
             <p>To Grammy and Grampy. Love, Lucy.</p>
             <div class="image-container">
-                <a href="baby.png" target="_blank"><img src="baby.png" alt="Baby"></a>
-                <a href="heart.png" target="_blank"><img src="heart.png" alt="Heart"></a>
+                <img src="baby.png" alt="Baby" onclick="openModal(this.src)">
+                <img src="heart.png" alt="Heart" onclick="openModal(this.src)">
             </div>
         </div>
+    </div>
+    
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="">
     </div>
     
     <script>
         function checkName() {
             const name = document.getElementById("nameInput").value.trim().toLowerCase();
+            document.getElementById("loveMessage").style.display = "none";
+            document.getElementById("valentineMessage").style.display = "none";
             if (name === "angela") {
                 document.getElementById("inputBox").style.display = "none";
                 document.getElementById("loveMessage").style.display = "block";
@@ -93,6 +114,15 @@
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 5000);
             }, 300);
+        }
+
+        function openModal(src) {
+            document.getElementById("modalImage").src = src;
+            document.getElementById("imageModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
         }
     </script>
 </body>
